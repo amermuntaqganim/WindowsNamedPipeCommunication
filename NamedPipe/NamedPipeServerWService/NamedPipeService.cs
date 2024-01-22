@@ -27,7 +27,6 @@ namespace NamedPipeServerWService
         protected override void OnStop()
         {
             NamedPipeServerManager.Instance.WriteLogs("On Stop Service");
-            NamedPipeServerManager.Instance.StopServer();
         }
     }
 }

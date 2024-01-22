@@ -51,9 +51,9 @@ namespace NamedPipeServerWService.NamedPipeServer
             WriteLogs("SERVER => Server started.");
         }
 
-        public void StopServer() 
+        public void StopServer () 
         {
-            server.Dispose();
+            
         }
 
         public void WriteLogs(string logmessage)
@@ -61,7 +61,7 @@ namespace NamedPipeServerWService.NamedPipeServer
             string path = "C:\\NamedPipeServerLogs.txt";
             using (StreamWriter sw = new StreamWriter(File.Open(path, System.IO.FileMode.Append)))
             {
-                sw.WriteLineAsync(logmessage);
+                sw.WriteLineAsync(DateTime.Now + " : " + logmessage);
             }
         }
 

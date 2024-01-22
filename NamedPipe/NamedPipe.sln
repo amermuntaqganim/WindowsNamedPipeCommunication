@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeClientWPF", "NamedPipe\NamedPipeClientWPF.csproj", "{27DEBCB5-AF54-4BC5-B95B-54EB9EA36E87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeClientWPF", "NamedPipeClientWPF\NamedPipeClientWPF.csproj", "{27DEBCB5-AF54-4BC5-B95B-54EB9EA36E87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeServerWService", "NamedPipeServerWService\NamedPipeServerWService.csproj", "{549ABD04-F3DC-4EBD-8E20-670073464AA7}"
 EndProject

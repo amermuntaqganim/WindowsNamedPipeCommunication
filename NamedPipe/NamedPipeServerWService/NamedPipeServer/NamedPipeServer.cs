@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -33,8 +34,18 @@ namespace NamedPipeServerWService.NamedPipeServer
 
         public async Task Start()
         {
-            Initialize(new NamedPipeServerStream(_name, PipeDirection.InOut, 1,
-                    PipeTransmissionMode.Message, PipeOptions.Asynchronous));
+
+            PipeSecurity ps = new PipeSecurity();
+            ps.AddAccessRule(new PipeAccessRule("Users", PipeAccessRights.ReadWrite | PipeAccessRights.CreateNewInstance, AccessControlType.Allow));
+            ps.AddAccessRule(new PipeAccessRule("CREATOR OWNER", PipeAccessRights.FullControl, AccessControlType.Allow));
+            ps.AddAccessRule(new PipeAccessRule("SYSTEM", PipeAccessRights.FullControl, AccessControlType.Allow));
+            
+
+            //Initialize(new NamedPipeServerStream(_name, PipeDirection.InOut, 1,
+                    //PipeTransmissionMode.Message, PipeOptions.Asynchronous));
+
+            Initialize(new NamedPipeServerStream(_name, PipeDirection.InOut, 10,
+                                    PipeTransmissionMode.Message, PipeOptions.Asynchronous, 1024, 1024, ps));
 
             try
             {

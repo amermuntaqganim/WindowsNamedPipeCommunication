@@ -33,17 +33,22 @@ namespace NamedPipeClientWPF.NamedPipeClient
 
         private void ClientClientStarted(object sender, EventArgs e)
         {
+            Console.WriteLine("Client Started");
             WriteLogs("CLIENT => Client started.");
         }
 
         private void ClientConnectedToServer(object sender, EventArgs e)
         {
+            Console.WriteLine("Connected To Server");
             WriteLogs("CLIENT => Client connected to server.");
         }
 
         private void ClientMessageReceived(object sender, ReceiveMessageEventArgs e)
         {
             WriteLogs("Received Message:" + e.Message);
+
+            if (e.Message.Contains("A Message From Server"))
+                client.Send("A Message From Client");
         }
 
         public void ConnectToServer()
@@ -58,10 +63,10 @@ namespace NamedPipeClientWPF.NamedPipeClient
 
         public void WriteLogs(string logmessage)
         {
-            string path = "C:\\NamedPipeClientLogs.txt";
-            using (StreamWriter sw = new StreamWriter(File.Open(path, System.IO.FileMode.Append)))
+            string path = "NamedPipeClientLogs.txt";
+            using (StreamWriter sw = new StreamWriter(File.Open(path, System.IO.FileMode.Append, FileAccess.Write)))
             {
-                sw.WriteLineAsync(logmessage);
+                sw.WriteLineAsync(DateTime.Now+" : "+logmessage);
             }
         }
 

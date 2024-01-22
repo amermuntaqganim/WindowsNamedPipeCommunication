@@ -1,0 +1,15 @@
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\bin\Debug\NamedPipeClientWPF.exe.config
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\bin\Debug\NamedPipeClientWPF.exe
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\bin\Debug\NamedPipeClientWPF.pdb
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.csproj.AssemblyReference.cache
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\MainWindow.g.cs
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\App.g.cs
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF_MarkupCompile.cache
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF_MarkupCompile.lref
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\MainWindow.baml
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.g.resources
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.Properties.Resources.resources
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.csproj.GenerateResource.cache
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.csproj.CoreCompileInputs.cache
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.exe
+G:\Ganim\VSWorkspace\NamedPipe\NamedPipe\obj\Debug\NamedPipeClientWPF.pdb

@@ -11,6 +11,7 @@ namespace NamedPipeServerWService.NamedPipeServer
 {
     public class NamedPipeServerManager
     {
+        public EventHandler<string> OnClientDisconnected;
         INamedPipeServer server = null;
         public static NamedPipeServerManager Instance = Singleton<NamedPipeServerManager>.Instance;
 
@@ -31,24 +32,26 @@ namespace NamedPipeServerWService.NamedPipeServer
 
         private void ServerMessageReceived(object sender, ReceiveMessageEventArgs e)
         {
-            WriteLogs($"SERVER => Message received from client:" + e.Message);
+            WriteLogs($"Message received from client:" + e.Message);
         }
 
-        private void ServerDisconnected(object sender, EventArgs e)
+        private async void ServerDisconnected(object sender, EventArgs e)
         {
-            WriteLogs($"SERVER => A client disconnected.");
+            WriteLogs($"A client disconnected.");
+            OnClientDisconnected.Invoke(sender, "Disconnected");
+
         }
 
         private void ClientConnected(object sender, EventArgs e)
         {
-            WriteLogs("SERVER => A client connected.");
+            WriteLogs("A client connected to Server");
 
             StartTimer();
         }
 
         private void ServerStarted(object sender, EventArgs e)
         {
-            WriteLogs("SERVER => Server started.");
+            WriteLogs("Server started.");
         }
 
         public void StopServer () 
@@ -58,8 +61,11 @@ namespace NamedPipeServerWService.NamedPipeServer
 
         public void WriteLogs(string logmessage)
         {
-            string path = "C:\\NamedPipeServerLogs.txt";
-            using (StreamWriter sw = new StreamWriter(File.Open(path, System.IO.FileMode.Append)))
+            string directoryPath = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = "NamedPipeServerLogs.txt";
+            string filePath = Path.Combine(directoryPath, fileName);
+
+            using (StreamWriter sw = new StreamWriter(File.Open(filePath, System.IO.FileMode.Append)))
             {
                 sw.WriteLineAsync(DateTime.Now + " : " + logmessage);
             }

@@ -22,6 +22,14 @@ namespace NamedPipeServerWService
         {
             NamedPipeServerManager.Instance.WriteLogs("On Start method from Service");
             NamedPipeServerManager.Instance.StartServer();
+
+            NamedPipeServerManager.Instance.OnClientDisconnected += OnDisconnectedEvent;
+        }
+
+        private void OnDisconnectedEvent(object sender, string e)
+        {
+            NamedPipeServerManager.Instance.WriteLogs("Client disconnected, need to start server again");
+            NamedPipeServerManager.Instance.StartServer();
         }
 
         protected override void OnStop()

@@ -1,4 +1,6 @@
-﻿namespace NamedPipeServerWService
+﻿using System.ServiceProcess;
+
+namespace NamedPipeServerWService
 {
     partial class ProjectInstaller
     {
@@ -36,10 +38,12 @@
             this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller.Password = null;
             this.serviceProcessInstaller.Username = null;
+            this.serviceInstaller.AfterInstall += ServiceInstallerAfterInstall;
             // 
             // serviceInstaller
             // 
             this.serviceInstaller.ServiceName = "NamedPipeService";
+            this.serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
@@ -47,6 +51,12 @@
             this.serviceProcessInstaller,
             this.serviceInstaller});
 
+        }
+
+        private void ServiceInstallerAfterInstall(object sender, System.Configuration.Install.InstallEventArgs e)
+        {
+            ServiceController service = new ServiceController(serviceInstaller.ServiceName);
+            service.Start();
         }
 
         #endregion
